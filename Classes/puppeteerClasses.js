@@ -37,6 +37,35 @@ class puppeteerClasses {
     }
   }
 
+  async loadWebUrl({ url, page }) {
+    try {
+      await page.goto(url, { waitUntil: 'networkidle2' });
+      console.log('loadWebUrl =>', url);
+      await page.addScriptTag({
+        url: 'https://code.jquery.com/jquery-3.2.1.min.js',
+      });
+      console.log('Jquery Loaded...');
+      return page;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+  async executeJquery({ query, page }) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let data = page.evaluate((query) => {
+          console.log(eval(query));
+          return eval(query);
+        }, query);
+        resolve(data);
+      } catch (err) {
+        console.log('executeJquery =>>', err);
+        reject(err);
+      }
+    });
+  }
+
   async closePage(page) {
     try {
       return await page.close();

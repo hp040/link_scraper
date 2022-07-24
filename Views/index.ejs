@@ -4,9 +4,58 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Quicksand" />
+    <link rel="stylesheet" type="text/css" href="/css/pretty-json.css" />
+
+    <!-- lib -->
+    <script type="text/javascript" src="/libs/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/libs/underscore-min.js"></script>
+    <script type="text/javascript" src="/libs/backbone-min.js"></script>
+
+    <!-- src dev
+    <script type="text/javascript" src="/pretty-json-debug.js" ></script>
+    -->
+    <!-- src build -->
+    <script type="text/javascript" src="/build/pretty-json-min.js"></script>
+    <style type="text/css">
+      body {
+        width: 80%;
+        border-style: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      textarea {
+        width: 600px;
+        padding: 4px 7px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        margin-bottom: 7px;
+      }
+    </style>
     <title>link scraper</title>
   </head>
   <body>
-    test
+    <span id="result"></span>
   </body>
+  <script>
+    var json = <%- links %>;
+
+    var data;
+    try {
+      // data = JSON.parse(json);
+      data = json;
+    } catch (e) {
+      console.log(e);
+     alert('not valid JSON');
+    }
+
+    var node = new PrettyJSON.view.Node({
+      el: document.getElementById('result'),
+      data: data,
+      dateFormat: 'DD/MM/YYYY - HH24:MI:SS'
+    }).expandAll();
+  </script>
 </html>
