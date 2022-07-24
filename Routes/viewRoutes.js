@@ -1,4 +1,5 @@
 const viewRouter = require('express').Router();
 const { ViewControllers } = require('../Controller/index');
-viewRouter.get('/', ViewControllers.handleIndexGet);
+const { ViewValidators } = require('../Validators/index');
+viewRouter.get('/', ViewValidators.handleIndexGet, ViewControllers.handleIndexGet);
 module.exports = viewRouter;

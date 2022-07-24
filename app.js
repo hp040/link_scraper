@@ -42,7 +42,7 @@ app.use(cors());
 
   app.listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
-    await puppeteerClasses.init();
+    // await puppeteerClasses.init();
   });
 })();
 process
