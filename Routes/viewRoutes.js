@@ -1,10 +1,4 @@
 const viewRouter = require('express').Router();
-
-viewRouter.get('/', (req, res) => {
-  try {
-    res.render('index');
-  } catch (err) {
-    console.log(err);
-  }
-});
+const { ViewControllers } = require('../Controller/index');
+viewRouter.get('/', ViewControllers.handleIndexGet);
 module.exports = viewRouter;
