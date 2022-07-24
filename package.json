@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +25,8 @@
     "express": "^4.18.1",
     "joi": "^17.6.0",
     "puppeteer": "^15.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
